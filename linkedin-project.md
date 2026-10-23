@@ -12,9 +12,9 @@ Fleet — AI SDLC Orchestrator
 
 Multi-agent AI orchestrator that takes a module brief or a ready Jira issue through planning, implementation, review, and a pull request.
 
-**Description** (1,053 characters, including the blank lines between paragraphs)
+**Description** (1,225 characters, including the blank lines between paragraphs)
 
-Fleet is a multi-agent AI orchestrator for software delivery, developed by Yunus Emre Cebe. It started as a delivery orchestrator in September 2026, then became a product-neutral engine in October 2026. The delivery repository has 535 commits.
+Fleet is a multi-agent AI orchestrator for software delivery, developed by Yunus Emre Cebe. It started as a delivery orchestrator in September 2026, then became a product-neutral engine in October 2026 by abstracting that system into its own repository. The 535 commits are that development history, including the work before the Fleet repository existed. They are not the published engine repository's commit count.
 
 Work enters in three ways. A module brief becomes a spec and a task list. A ready Jira task or bug, with acceptance criteria and one lane, becomes one implementation task and skips the architect. A ready story or epic uses the same analysis, then sub-tasks that wait on their dependencies.
 

@@ -12,7 +12,7 @@ https://github.com/yunusemrecebe/fleet-showcase
 
 Analysis and tracker issues still need a split, a dependency order, and a review that is separate from the implementer.
 
-Fleet's output is a spec, ordered tasks, tests, a review, and a pull request. A person decides the spec. Under the defaults, a person also merges.
+Fleet's output is a spec, ordered tasks, tests, a review, and a pull request. Spec decisions follow configurable human-approval and timeout policies. Merge remains manual by default.
 
 ---
 

@@ -21,12 +21,12 @@ Counts below are only for readers who want the scope. They are not a measure of 
 
 On source `main` at `5312a9ae`:
 
-- 535 commits in the whole repository. That number includes product files and is not the orchestrator count.
-- 354 commits touch the `orchestrator/` tree.
-- 347 of those are contained in the extraction base `b6d72af`.
-- 7 touch `orchestrator/` after that base and are not in the published Fleet tree.
+- 535 commits on that `main`. This is the development history of the delivery orchestrator that was abstracted into Fleet. It includes the work done before Fleet had its own repository. It is not the Git history of the published engine repository.
+- 354 commits touch the `orchestrator/` tree. That figure is a narrower path filter, not a replacement for the 535. It leaves out documentation, tests, rules, scripts, and integration work that belong to the same development history.
+- 347 of those path-filtered commits are contained in the extraction base `b6d72af`.
+- 7 touch `orchestrator/` after that base. They are not in the published Fleet tree. Source work after the extraction is not presented here as already present in the published engine.
 
-The history command was `git rev-list --count <rev> -- orchestrator` in that checkout. Renames inside that tree are included by git's history simplification for the path. The first commit on the path is the initial delivery snapshot of 1 September 2026, not a later rename.
+The path-filter command was `git rev-list --count <rev> -- orchestrator` in that checkout. Renames inside that tree are included by git's history simplification for the path. The first commit on the path is the initial delivery snapshot of 1 September 2026, not a later rename. The 535 count is `git rev-list --count 5312a9ae` on that same `main`, with no path filter.
 
 ## Authorship
 

@@ -67,7 +67,7 @@
     <h1>The handoff is the work</h1>
     <p>Analysis and tracker issues still need a split, a dependency order, and a review that is separate from the implementer.</p>
     <p>An agent that takes every open issue also takes the wrong ones. A teammate may already own it. It may have no acceptance criteria.</p>
-    <div class="band">Expected output: a spec, ordered tasks, tests, a review, and a pull request. A person decides the spec. Under the defaults, a person merges.</div>
+    <div class="band">Expected output: a spec, ordered tasks, tests, a review, and a pull request. Spec decisions follow configurable human-approval and timeout policies. Merge remains manual by default.</div>
     <footer><span>Fleet — AI SDLC Orchestrator</span><span>2 / 7</span></footer>
   </section>
 
@@ -107,7 +107,7 @@
         <p class="step">Sub-tasks and dependency links</p>
       </div>
     </div>
-    <div class="band">A task starts only when the tasks it depends on are done. Orange marks a person.</div>
+    <div class="band">A task starts only when the tasks it depends on are done. Orange marks a spec decision: a person is asked, and timeout can approve. Merge remains manual by default.</div>
     <footer><span>Fleet — AI SDLC Orchestrator</span><span>3 / 7</span></footer>
   </section>
 

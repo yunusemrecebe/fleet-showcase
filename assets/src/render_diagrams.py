@@ -96,7 +96,7 @@ def three_intakes() -> str:
     cw = 368
     parts = [
         text(32, 40, "Three ways work enters", size=24, weight="700"),
-        text(32, 66, "Orange marks a person. The band at the bottom is shared by all three.", size=15, fill=MUTED),
+        text(32, 66, "Orange marks a spec decision. A person is asked; timeout can approve. Merge stays manual by default.", size=15, fill=MUTED),
     ]
     headers = [
         ("Module analysis", "#1e3a5f"),
@@ -269,7 +269,7 @@ def control_points() -> str:
         parts.append(text(x + 18, y + 32, title, size=16, weight="700"))
         for i, line in enumerate(lines):
             parts.append(text(x + 18, y + 64 + i * 26, line, size=13, fill=MUTED))
-    parts.append(text(36, 700, "Orange is a person. Spec approval can still time out into an approval. The lane path accepts the plan.", size=14, fill=MUTED))
+    parts.append(text(36, 700, "Spec decisions follow a human-approval and timeout policy. The lane path accepts the plan.", size=14, fill=MUTED))
     parts.append(text(36, 726, "Pull-request approval is off unless switched on. Merge stays with a person unless that switch is on.", size=14, fill=MUTED))
     return document(w, h, "Fleet control points", parts)
 

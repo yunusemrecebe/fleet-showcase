@@ -54,6 +54,6 @@
 <text x="858" y="450" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">The base branch is not a push target.</text>
 <text x="858" y="476" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Default Done: merge and green CI.</text>
 <text x="858" y="502" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Hold and pause stop new claims.</text>
-<text x="36" y="700" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Orange is a person. Spec approval can still time out into an approval. The lane path accepts the plan.</text>
+<text x="36" y="700" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Spec decisions follow a human-approval and timeout policy. The lane path accepts the plan.</text>
 <text x="36" y="726" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Pull-request approval is off unless switched on. Merge stays with a person unless that switch is on.</text>
 </svg>

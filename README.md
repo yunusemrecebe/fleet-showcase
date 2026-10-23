@@ -2,7 +2,7 @@
 
 Fleet is a multi-agent AI orchestrator for software delivery. It coordinates planning, implementation, testing, review, and pull requests. Work starts from a module analysis, or from a Jira task, bug, story, or epic that passes the selection rules.
 
-The agents share a scheduler and a durable record of the work. They do not share one conversation. A person still decides the spec, and, under the default settings, still merges the pull request.
+The agents share a scheduler and a durable record of the work. They do not share one conversation. Spec decisions follow configurable human-approval and timeout policies. Merge remains manual by default.
 
 ## Problem
 
@@ -32,9 +32,9 @@ Jira writes are off until enabled. With the default, Fleet reports what it would
 
 ## Contribution
 
-Fleet was developed by Yunus Emre Cebe. The delivery repository that held the orchestrator has 535 commits on `main`, counted at revision `5312a9ae` on 23 October 2026. The work ran from 1 September 2026 through the extraction on 21 October 2026, and the Fleet engine was separated on 22 October 2026.
+Fleet was developed by Yunus Emre Cebe. The delivery orchestrator that became Fleet has 535 commits on `main`, counted at revision `5312a9ae` on 23 October 2026. That count is the orchestrator's development history, including the work done before Fleet had its own repository. It is not the commit count of the published Fleet engine repository. The work ran from 1 September 2026 through the extraction on 21 October 2026, and the engine was separated on 22 October 2026.
 
-In the earlier system the scheduler, the architect, the lane workers, dependency ordering, worktree implementation, quality gates, and the separated review prompts were already in use. Fleet is that system made product-neutral, with a crash-safe state layer, Jira as a second input, and human handoffs that release the lane instead of blocking it.
+In the earlier system the scheduler, the architect, the lane workers, dependency ordering, worktree implementation, quality gates, and the separated review prompts were already in use. Fleet is that system abstracted into its own engine repository and made product-neutral, with a crash-safe state layer, Jira as a second input, and human handoffs that release the lane instead of blocking it.
 
 Dates, path scope, and the engine revision these pages were checked against are in [Provenance](docs/provenance.md).
 

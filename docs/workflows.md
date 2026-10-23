@@ -39,7 +39,7 @@ Then the paths split:
 
 A global pause, or a hold on one issue, stops new claims. Running work stops at the next safe point. Attempts are capped (default 2). Past the cap, the issue is blocked with a comment and is not looped.
 
-Done means the pull request is merged and CI is green. Opening a pull request moves the issue to in review. A failed or deferred task does not close the issue.
+Under the default Jira settings, Done requires a merged pull request and green CI. `done_on` and `ci_required` can change that. Opening a pull request moves the issue to in review. A failed or deferred task does not close the issue.
 
 ## Module example
 
@@ -55,7 +55,7 @@ The same bug is skipped if a teammate is the assignee, if the acceptance criteri
 
 ## Story or epic example
 
-A story, "Customers filter invoices by status," is in a ready status and passes the shared filters. Fleet writes a brief and runs the architect. Questions and the spec decision are posted to the channels that are enabled, including a comment on the story. After approval, sub-tasks are created under the story, capped (default 40). Dependencies become blocker links. The poller does not ingest those sub-tasks as new work. The parent comment shows progress. The parent reaches Done only when every sub-task has met the merge and CI rule.
+A story, "Customers filter invoices by status," is in a ready status and passes the shared filters. Fleet writes a brief and runs the architect. Questions and the spec decision are posted to the channels that are enabled, including a comment on the story. After approval, sub-tasks are created under the story, capped (default 40). Dependencies become blocker links. The poller does not ingest those sub-tasks as new work. The parent comment shows progress. The parent reaches Done only when every sub-task has met the Done rule. Under the default Jira settings, that rule is a merged pull request and green CI. `done_on` and `ci_required` can change it.
 
 If someone edits the story after the spec was generated, Fleet stops, comments once, and waits for a revise command. It does not silently rebuild.
 
