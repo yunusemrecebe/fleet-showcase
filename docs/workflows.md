@@ -12,7 +12,7 @@ The default source mode is modules. Jira runs only when the profile says `jira` 
 | Who splits the work | The architect, after any clarification questions | Nobody. The issue is already one task | The architect. Approved tasks are mirrored as sub-tasks |
 | Acceptance criteria | Come from the brief and the spec | Required, or the issue is skipped | Not required on the issue itself. The spec carries the breakdown |
 | Dependencies | `depends_on_tasks` on the generated tasks. The planner waits | "Is blocked by" links. Unfinished blockers skip the issue | Same task dependencies, also written as blocker links on the sub-tasks |
-| Human decision before coding | Clarification if the brief is unclear, then a spec decision | None, unless the task text itself contains open questions | Same architect gates as a module |
+| Human decision before coding | Clarification if the brief is unclear, then a spec decision | None, unless the task text itself contains open questions. The architect is skipped | Same architect gates as a module |
 | Tracker updates | Optional mirror onto one tracking issue | Status, comments, and a lease when writes are on | Parent progress, plus one sub-task per generated task |
 
 Issue type names are configuration. The defaults are Task, Bug, and Sub-task for the direct path, and Story and Epic for the spec path.
@@ -49,7 +49,7 @@ An optional portfolio step can draft a module order and wait for a person to app
 
 ## Task or bug example
 
-A bug, "Status filter returns rows outside the range," sits in Ready for Dev, carries the required label, has an acceptance criterion, and is labeled for the web lane. The reporter is on the allow-list. Nobody is assigned. Blockers are done. The poll claims it, when writes are on, and materializes one task. The lane plans, implements, tests, and reviews. The issue moves to in review when the pull request opens, and to Done only after merge and green CI.
+A bug, "Status filter returns rows outside the range," sits in Ready for Dev, carries the required label, has an acceptance criterion, and is labeled for the web lane. The reporter is on the allow-list. Nobody is assigned. Blockers are done. The poll claims it, when writes are on, and materializes one task. The lane plans, implements, tests, and reviews. The issue moves to in review when the pull request opens. With the default Jira settings it reaches Done after the pull request is merged and CI is green. `done_on` and `ci_required` can change that rule.
 
 The same bug is skipped if a teammate is the assignee, if the acceptance criterion heading is missing, or if the label maps to two lanes.
 
@@ -64,8 +64,8 @@ If someone edits the story after the spec was generated, Fleet stops, comments o
 1. Open questions in the task text park the task. The lane takes other work.
 2. A plan is generated. On the lane path it is accepted and implementation starts.
 3. The worker builds in a worktree and runs tests. Quality gates can fail the task even when the test command exits zero.
-4. QA runs, then Security, then BA. Bounded fix rounds may run. The cap ends the loop.
-5. A pull request is pushed to a feature branch. The base branch is not the push target.
-6. A person merges, unless merge automation was turned on. Jira Done follows the merge and CI result.
+4. QA runs from the diff, the test results, and the spec title. Security runs from the diff and the test results only when the task is sensitive. BA triages the findings. Bounded fix rounds may run. The cap ends the loop.
+5. A pull request is pushed to a feature branch. The base branch is not the push target. Opening it is separate from merging it.
+6. A person merges, unless merge automation was turned on. Under the default Jira settings, Done follows the merge and a green CI result.
 
 The acceptance scenarios that exercise the direct-issue path and the story-or-module path are summarized in the [walkthrough](case-study.md).

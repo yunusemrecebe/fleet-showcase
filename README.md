@@ -1,45 +1,79 @@
-# Fleet
+# Fleet — AI SDLC Orchestrator
 
-Fleet is an SDLC orchestrator. A module analysis, or a ready Jira task, bug, story, or epic, goes in. A spec, implementation tasks, tests, review, and a pull request come out. Product code stays in the product repositories. Fleet is the engine beside them: workspace configuration, role rules, and runtime state live next to `fleet.config.yaml`, outside the engine package.
+Fleet is a multi-agent AI orchestrator for software delivery. It coordinates planning, implementation, testing, review, and pull requests. Work starts from a module analysis, or from a Jira task, bug, story, or epic that passes the selection rules.
 
-This repository is a public description for recruiters and engineers. The engine source stays in its own codebase. See [NOTICE](NOTICE.md).
+The agents share a scheduler and a durable record of the work. They do not share one conversation. A person still decides the spec, and, under the default settings, still merges the pull request.
 
 ## Problem
 
-A feature arrives as a long analysis or as a tracker issue. Someone still has to split it into tasks, honour dependencies, keep review separate from implementation, and tell ready work from everything else in the backlog. Handing every open issue to an agent takes the wrong bugs, including ones a teammate already owns and ones with no acceptance criteria.
+A feature arrives as a long analysis or as a tracker issue. Someone has to split it into tasks, keep the dependency order, and review the result apart from the person or agent that wrote the code. An agent that takes every open issue will also take the wrong ones: an issue a teammate already owns, or a bug with no acceptance criteria.
 
-## Approach
+## From input to pull request
 
-Fleet schedules that path and records the gates. The model still has to pass tests, review, and the human decisions below. The default source is module analysis. Jira is a second input, used alone or beside modules. Both feed the same lanes.
+![Three ways work enters Fleet](assets/three-intakes.svg)
 
-**Module analysis.** A person supplies a brief. The architect asks when the brief is unclear, writes a spec (what to build) and a task list, and waits for a spec decision. Other modules can be analysed while one is waiting, up to a small cap.
+A module brief is analysed into a spec and a task list. A ready task or bug becomes one implementation task and skips the architect. A ready story or epic uses the same architect path, then becomes sub-tasks whose links record the dependencies.
 
-**Jira task or bug.** A poll takes issues in configured ready statuses. A task or bug that passes the selection rules becomes one implementation task. Acceptance criteria are required. There is no architect pass.
+On the operating path, a lane produces a plan and accepts it, implements in a worktree, and runs tests and the quality gates that are switched on. QA reviews the diff and the test results. Security reviews the same kind of evidence only when the task is marked sensitive or its text matches auth, login, token, password, or payment. A business-analyst pass triages the findings. A pull request opens on a feature branch after a clean review. Opening that pull request and merging it are different steps. Merge stays with a person unless that automation is turned on.
 
-**Jira story or epic.** The same poll can take a story or epic. It is briefed and sent through the same architect path. After the spec is approved, Fleet creates sub-tasks and links them so a task waits for the tasks it depends on. The parent is done only when every sub-task is done under the same rules.
+The lane does not sit idle while a person answers. The question is saved, other ready work continues, and the answered item resumes on the next free compatible lane before new work starts.
 
-On the lane path, a plan is produced and then accepted without a separate human plan review. Implementation runs in a worktree. Tests and quality gates run before review. QA, then Security, then a business-analyst triage, look at the diff, the tests, and the spec. A pull request opens after a clean review unless that automation is turned off. Merging stays with a person unless Jira merge automation is explicitly enabled. A Jira issue reaches Done only after the pull request is merged and CI is green.
+## Capabilities
 
-When a person is needed, the lane does not sit idle. Fleet records the question, frees the lane, and resumes that work on the next free compatible lane before starting something new. The first valid answer from Slack, the docs hub, or a Jira comment wins.
+- Module analysis becomes a spec, clarification questions when the brief is unclear, and tasks with dependencies.
+- A ready Jira task or bug, with acceptance criteria and one clear lane, runs as a single implementation task.
+- A ready story or epic is analysed, then mirrored as sub-tasks. A task waits until the tasks it depends on are done.
+- Human answers arrive through Slack, the docs hub, or a Jira comment. The first valid answer wins.
+- QA and Security prompts are built from the diff, the test results, and, for QA, the spec title. They do not include the developer transcript or the full spec. This is a separation of prompt inputs, not a separate machine.
+- Lane state, continuations, leases, and an outbox are written so a crash can resume. Corrupt interaction files are quarantined rather than replaced with an empty store.
+- Quality gates and the human decisions below are configuration. Several gates can be turned off. Several approvals can be left to a timeout policy.
 
-Jira intake is filtered. An empty reporter allow-list takes nothing. The wrong status, a missing required label, a hold, an issue assigned to a person, unmet blockers, a task or bug with no acceptance criteria, or an unmapped lane are skipped. With writes off, the default, Fleet only reports what it would claim.
+Jira writes are off until enabled. With the default, Fleet reports what it would claim and does not take the issue.
 
 ## Contribution
 
-The engine history on `main` is eight commits, all authored by Yunus Emre Cebe on 22 October 2026. The first code commit is a mechanical copy and rename of an upstream orchestrator, with the suite not yet fully green. The later commits are the work visible in this history: workspace separated from the package, product-specific code moved into a pack, crash-safe state, Jira intake, non-blocking human interactions, acceptance scenarios, and a security pass on child-process environments and fail-closed tracker checks. An uncommitted local change lets each platform use its own git checkout.
+I am Yunus Emre Cebe. I built this orchestrator inside a product-delivery repository from 1 September 2026 through the extraction on 21 October 2026, and then separated it into the Fleet engine on 22 October 2026.
 
-Work done inside the upstream project before that copy is not in this history, so it is left unclaimed.
+In the earlier system the scheduler, the architect, the lane workers, dependency ordering, worktree implementation, quality gates, and the separated review prompts were already in use. Fleet is that system made product-neutral, with a crash-safe state layer, Jira as a second input, and human handoffs that release the lane instead of blocking it.
 
-## Status
+Git history records me as the author. Most of those commits also list the Cursor agent as co-author, so this page does not treat every line as written without that tool. Dates, path scope, and the engine revision these pages were checked against are in [Provenance](docs/provenance.md).
 
-The engine is version `0.1.0.dev0`, classified as alpha, and is not published as a package. Module intake, filtered Jira intake, the lane scheduler, review, and suspend/resume are implemented, with acceptance tests in the engine repository. This description states no success rate and no production volume. Details are in [Current status](docs/status.md).
+## Technology
+
+| Piece | Role |
+|---|---|
+| Python 3.11+ | Engine implementation |
+| LangGraph | The developer subgraph used while a lane implements one task, and a separate per-feature SDLC graph |
+| Planner and lane workers | The operating scheduler. It is not the per-feature graph |
+| Jira, Slack, docs hub | Intake and human channels |
+| Git worktrees | Feature-branch implementation and pull requests |
+
+The per-feature graph runs architect, spec approval, development, QA, Security, triage, and merge review as one checkpointed flow. Day-to-day operation is the planner plus lanes. Those two paths do not use the same approval defaults. [Architecture](docs/architecture.md) separates them.
+
+## Walkthrough
+
+[Illustrative walkthrough](docs/case-study.md). It follows acceptance tests that drive the planner and the tracker against a fake Jira. The model and git hosting are stubbed. It is not a live product delivery and not a measure of model quality.
+
+## Status and limits
+
+The published engine is alpha and is not a public package. These pages were checked against engine revision `0e1693d` (22 October 2026).
+
+Spec approval asks a person, then approves on timeout unless that switch is off. The daytime wait is 3 hours. From 00:00 to 09:00 Europe/Istanbul it is 180 seconds. The lane path accepts the implementation plan without a separate plan review. A pull request opens after review unless that automation is off. A pull-request approval gate exists and defaults to off. Merge automation defaults to off.
+
+Under the default Jira settings, Done requires a merged pull request and green CI. `done_on` and `ci_required` can change that. A repository with no checks does not reach Done while CI is required.
+
+Security review does not run for every task. An empty Jira reporter allow-list takes nothing. Details and the other filters are in [Status](docs/status.md) and [Workflows](docs/workflows.md).
+
+No speed, cost, success rate, or production volume is stated. None was measured for this repository.
 
 ## Read next
 
-| If you have | Read |
+| Read | For |
 |---|---|
-| About a minute | The three rows above, then the [diagrams](assets/README.md) |
-| Five to ten minutes | [Workflows](docs/workflows.md), then [Architecture](docs/architecture.md) |
-| A concrete sequence | [Illustrative walkthrough](docs/case-study.md) |
-| A conversation | [Seven slides](presentation/slides.md) ([PDF](presentation/fleet-showcase.pdf)) |
-| A LinkedIn field | [Titles and descriptions](linkedin-project.md) |
+| [Workflows](docs/workflows.md) | The three intakes side by side |
+| [Architecture](docs/architecture.md) | Scheduler, graphs, state, and approval defaults |
+| [Walkthrough](docs/case-study.md) | The illustrative sequence |
+| [Status](docs/status.md) | What is in the published engine, and the limits |
+| [Provenance](docs/provenance.md) | Dates, authorship, and the revision that was checked |
+| [Slides](presentation/slides.md) | Seven slides ([PDF](presentation/fleet-showcase.pdf)) |
+| [LinkedIn drafts](linkedin-project.md) | Project and Featured text |

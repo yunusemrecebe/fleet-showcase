@@ -116,7 +116,7 @@ def three_intakes() -> str:
             (["Selection rules"], False),
             (["Acceptance criteria required"], False),
             (["One implementation task"], False),
-            (["No architect pass"], False),
+            (["The architect is skipped"], False),
         ],
         [
             (["Ready story or epic"], False),
@@ -146,10 +146,10 @@ def three_intakes() -> str:
     parts.append(rect(32, 486, 1116, 220, "#ffffff", "#d6d3d1", rx=14))
     parts.append(text(52, 518, "Then one lane", size=18, weight="700"))
     row1 = [
-        (52, 250, "Dependencies are done", False),
-        (326, 250, "Plan accepted on the lane", False),
-        (600, 250, "Implement, test, gates", False),
-        (874, 250, "QA, then Security, then BA", False),
+        (52, 230, "Dependencies are done", False),
+        (300, 248, "Plan accepted on the lane", False),
+        (566, 230, "Implement, test, gates", False),
+        (814, 290, "QA, then Security if sensitive", False),
     ]
     for i, (x, pw, label, human) in enumerate(row1):
         parts.append(box(x, 538, pw, 44, [label], fill=HUMAN_FILL if human else CARD, stroke=HUMAN_STROKE if human else LINE))
@@ -159,7 +159,7 @@ def three_intakes() -> str:
     parts.append(harrow(416, 438, 636))
     parts.append(box(440, 612, 220, 48, ["A person merges"], fill=HUMAN_FILL, stroke=HUMAN_STROKE))
     parts.append(harrow(664, 686, 636))
-    parts.append(box(688, 612, 420, 48, ["Jira Done: merged and green CI"], fill="#f0fdf4", stroke="#166534"))
+    parts.append(box(688, 612, 420, 48, ["Default Jira Done: merge and green CI"], fill="#f0fdf4", stroke="#166534"))
     return document(w, h, "Three ways work enters Fleet", parts)
 
 
@@ -201,10 +201,10 @@ def jira_selection() -> str:
     parts.append(box(540, 548, 460, 96, ["Story or epic", "Unassigned. Acceptance criteria are", "not required yet. Architect brief."]))
     parts.append(varrow(270, 528, 548))
     parts.append(varrow(770, 528, 548))
-    parts.append(box(40, 688, 460, 52, ["One implementation task"]))
-    parts.append(box(540, 688, 460, 52, ["Spec decision, then sub-tasks"], fill=HUMAN_FILL, stroke=HUMAN_STROKE))
-    parts.append(varrow(270, 644, 688))
-    parts.append(varrow(770, 644, 688))
+    parts.append(box(40, 680, 460, 68, ["One implementation task", "The architect is skipped"]))
+    parts.append(box(540, 680, 460, 68, ["Spec decision, then sub-tasks"], fill=HUMAN_FILL, stroke=HUMAN_STROKE))
+    parts.append(varrow(270, 644, 680))
+    parts.append(varrow(770, 644, 680))
     parts.append(text(40, 778, "Generated sub-tasks and module-mirror issues are never taken as new work.", size=15, fill=MUTED))
     parts.append(text(40, 806, "Writes off: observe only. Empty reporter allow-list: nothing is taken.", size=15, fill=MUTED))
     return document(w, h, "Which Jira issues Fleet takes", parts)
@@ -221,7 +221,7 @@ def control_points() -> str:
         (164, ["Architect for briefs, stories, epics"], False),
         (232, ["Planner assigns a ready task"], False),
         (300, ["Lane: plan, implement, test"], False),
-        (368, ["QA, then Security"], False),
+        (368, ["QA, then Security if the task is sensitive"], False),
         (436, ["BA triage"], False),
         (504, ["Pull request on a feature branch"], False),
         (572, ["A person merges"], True),
@@ -238,10 +238,11 @@ def control_points() -> str:
 
     notes = [
         (500, 96, "Isolation", [
-            "QA and Security receive the diff,",
-            "the test results, and the spec title.",
-            "The developer transcript is absent.",
-            "Security does not receive QA findings.",
+            "QA gets the diff, test results,",
+            "and the spec title. Not the full spec.",
+            "Security gets the diff and results",
+            "only when the task is sensitive.",
+            "Neither gets the developer transcript.",
         ]),
         (840, 96, "While a person answers", [
             "The question is recorded.",
@@ -259,7 +260,7 @@ def control_points() -> str:
         (840, 360, "Hard stops", [
             "A person who moves the issue wins.",
             "The base branch is not a push target.",
-            "Done needs merge and green CI.",
+            "Default Done: merge and green CI.",
             "Hold and pause stop new claims.",
         ]),
     ]

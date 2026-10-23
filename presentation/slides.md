@@ -1,66 +1,68 @@
-# The handoff is the bottleneck
+# Fleet — AI SDLC Orchestrator
 
-A feature arrives as a long analysis or as a tracker issue. Someone still has to split the work, honour dependencies, and keep review separate from implementation.
+Yunus Emre Cebe
 
-An agent that takes every open issue will take the wrong ones. A teammate may already own it. It may have no acceptance criteria.
+A multi-agent system that coordinates planning, implementation, testing, review, and pull requests.
+
+https://github.com/yunusemrecebe/fleet-showcase
 
 ---
 
-# Fleet schedules that path
+# The handoff is the work
 
-Module analysis is the default input. Jira is a second input. Both feed the same lanes.
+Analysis and tracker issues still need a split, a dependency order, and a review that is separate from the implementer.
 
-Product code stays in the product repositories. Fleet keeps the spec, the task list, the tests, the review, and the pull request.
-
-The model output still has to pass those gates.
+Fleet's output is a spec, ordered tasks, tests, a review, and a pull request. A person decides the spec. Under the defaults, a person also merges.
 
 ---
 
 # Three ways in
 
-- Module brief. The architect asks when the brief is unclear, then waits for a spec decision and a task list.
-- Task or bug. Ready status, an allow-listed reporter, acceptance criteria, and one lane. One task. No architect pass.
-- Story or epic. The same architect path, then sub-tasks and dependency links. The parent finishes last.
+- Module brief. Architect, spec decision, task list.
+- Task or bug. Selection rules, one task. The architect is skipped.
+- Story or epic. The same architect path, then sub-tasks and dependency links.
 
 A task starts only when the tasks it depends on are done.
 
 ---
 
-# Control points
+# Roles and review inputs
 
-- A question frees the lane. Answered work resumes before any new work.
-- QA and Security see the diff, the tests, and the spec. They do not receive the developer transcript.
-- State is written atomically. A crash resumes from saved continuations. Corrupt files are quarantined.
-- Spec approval can auto-approve on timeout. The lane path accepts the plan. A person merges unless that switch is on.
-- Jira Done waits for a merged pull request and green CI.
+- Architect writes the spec. The developer implements one task on a lane.
+- QA reads the diff, the test results, and the spec title. Not the full spec, and not the developer transcript.
+- Security reads the diff and the test results only when the task is sensitive. It does not receive the QA findings.
+- BA triages the findings.
 
 ---
 
-# A checked sequence
+# Illustrative flow
 
-Illustrative. The acceptance tests use a fake tracker. The model and the git host are stubbed.
+Acceptance tests. Fake tracker. The model and git host are stubbed. Not a live delivery.
 
 - A module question parks. The next brief continues in the same tick.
-- A direct issue parks on its question. Other ready issues fill the lanes.
-- The answer resumes the parked work first. One channel is enough.
-- With the pull-request gate on, Done comes after merge and green CI. Restarts do not duplicate comments.
+- Answered work resumes before newer work.
+- With the pull-request gate on, Done follows a merge and green CI. That is the default Jira rule.
+- A restart does not duplicate the comments.
+
+This repository has no saved product diff or pull request to show.
 
 ---
 
-# Engineering choices
+# Control that survives a restart
 
-- Issue text is data. It does not set the write scope.
-- An empty reporter allow-list takes nothing. Human assignees are left alone.
-- Agent, build, test, and git processes do not inherit token-like environment variables.
-- One engine per workspace. Leases expire. Jira writes replay from an outbox, in order.
-- Spec rejects, plan rejects, and review rounds hit a cap. The cap is not raised quietly.
+- A question frees the lane. The answered item resumes first.
+- State is atomic. Continuations and an outbox survive a crash. Corrupt files are quarantined.
+- A person who moves a Jira issue wins. The base branch is not a push target.
+- Spec approval can time out into an approval. The lane accepts the plan.
+- A pull request opens after review. Merge stays with a person unless that switch is on.
 
 ---
 
 # Where it stands
 
-- Alpha. The engine is proprietary. This deck is the public description.
-- Module intake, filtered Jira intake, lanes, review, and suspend/resume are implemented.
-- Jira writes default to off. Pull-request approval defaults to off.
-- A checkout per platform exists in the local tree and is not committed yet.
-- No success rate and no production volume. Neither was measured for publication.
+- Alpha engine. This repository is the public description, checked against engine revision 0e1693d.
+- Module intake, filtered Jira intake, lanes, and suspend/resume are in that revision.
+- Jira writes default to off. Security review is conditional.
+- No success rate and no production volume.
+
+Workflows, architecture, and provenance are linked from the README.

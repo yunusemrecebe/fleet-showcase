@@ -40,10 +40,12 @@ The task is claimed and planned, implemented, and reviewed. At the pull-request 
 
 ### Result the test checks
 
-The status sequence is In Progress, Blocked while the gate is open, In Progress again, In Review when the pull request exists, and Done after merge with green CI. Each lifecycle comment is posted once. The living status comment is edited in place. The continuation is consumed. A restart before any step still ends in that state. Replaying a step does not duplicate the comments.
+Under that scenario's Jira settings the status sequence is In Progress, Blocked while the gate is open, In Progress again, In Review when the pull request exists, and Done after merge with green CI. Those are the defaults (`done_on: pr_merged`, CI required). Each lifecycle comment is posted once. The living status comment is edited in place. The continuation is consumed. A restart before any step still ends in that state. Replaying a step does not duplicate the comments.
 
 ## What this is evidence of
 
-These scenarios are evidence about control flow under stubs: parking, channel priority, resume order, comment idempotence, and the Done rule. They are not evidence about a live product, a model, or a team.
+These scenarios are evidence about control flow under stubs: parking, channel priority, resume order, comment idempotence, and the default Done rule. They are not evidence about a live product, a model, or a team.
+
+A shareable product run would need a saved spec, the task list and its dependencies, a code diff, a test log, a review finding, the fix, and a pull request link, with the commit that produced them. This repository has none of those artifacts. They were not invented here.
 
 A third scenario runs two stories and one direct issue together. The direct issue reaches Done while one story is still waiting on a question. Sub-tasks are created only for the story that has been approved. After both are approved and their pull requests are merged with green CI, each parent reaches Done once. That scenario is not retold step by step. The [workflow page](workflows.md) describes the path.

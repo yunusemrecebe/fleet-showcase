@@ -41,12 +41,13 @@
 <text x="770.0" y="618.0" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="middle">not required yet. Architect brief.</text>
 <line x1="270" y1="528" x2="270" y2="541" stroke="#1c1917" stroke-width="1.4"/><polygon points="265,540 275,540 270,548" fill="#1c1917"/>
 <line x1="770" y1="528" x2="770" y2="541" stroke="#1c1917" stroke-width="1.4"/><polygon points="765,540 775,540 770,548" fill="#1c1917"/>
-<rect x="40" y="688" width="460" height="52" rx="10" fill="#ffffff" stroke="#a8a29e" stroke-width="1.6"/>
-<text x="270.0" y="718.5" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">One implementation task</text>
-<rect x="540" y="688" width="460" height="52" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
+<rect x="40" y="680" width="460" height="68" rx="10" fill="#ffffff" stroke="#a8a29e" stroke-width="1.6"/>
+<text x="270.0" y="709.0" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="middle">One implementation task</text>
+<text x="270.0" y="727.0" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="middle">The architect is skipped</text>
+<rect x="540" y="680" width="460" height="68" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
 <text x="770.0" y="718.5" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">Spec decision, then sub-tasks</text>
-<line x1="270" y1="644" x2="270" y2="681" stroke="#1c1917" stroke-width="1.4"/><polygon points="265,680 275,680 270,688" fill="#1c1917"/>
-<line x1="770" y1="644" x2="770" y2="681" stroke="#1c1917" stroke-width="1.4"/><polygon points="765,680 775,680 770,688" fill="#1c1917"/>
+<line x1="270" y1="644" x2="270" y2="673" stroke="#1c1917" stroke-width="1.4"/><polygon points="265,672 275,672 270,680" fill="#1c1917"/>
+<line x1="770" y1="644" x2="770" y2="673" stroke="#1c1917" stroke-width="1.4"/><polygon points="765,672 775,672 770,680" fill="#1c1917"/>
 <text x="40" y="778" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Generated sub-tasks and module-mirror issues are never taken as new work.</text>
 <text x="40" y="806" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" text-anchor="start">Writes off: observe only. Empty reporter allow-list: nothing is taken.</text>
 </svg>

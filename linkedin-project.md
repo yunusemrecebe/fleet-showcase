@@ -1,47 +1,43 @@
 # LinkedIn text
 
-Paste-ready English. Counts were measured for this file. No metrics are included.
+Paste-ready English. Counts include the characters of the paste text only. No metrics.
 
 ## Project
 
-**Name** (33 characters)
+**Name** (28 characters)
 
-Fleet — SDLC orchestration engine
+Fleet — AI SDLC Orchestrator
 
-**Headline** (113 characters)
+**Headline** (137 characters)
 
-Turns a module brief, or a ready Jira task, bug, story, or epic, into reviewed pull requests with explicit gates.
+Multi-agent AI orchestrator that takes a module brief or a ready Jira issue through planning, implementation, review, and a pull request.
 
-**Description** (1,256 characters, including the blank lines between paragraphs)
+**Description** (1,093 characters, including the blank lines between paragraphs)
 
-Fleet is an SDLC orchestrator I extracted from an upstream engine and generalized. Product code stays in the product repositories. Fleet schedules the path from input to pull request.
+I built Fleet, a multi-agent AI orchestrator for software delivery. It started as the delivery orchestrator I developed from September 2026, then became a product-neutral engine in October 2026. Git history lists me as the author. Many commits also list the Cursor agent as co-author.
 
-Work enters in three ways. A module brief is analysed into a spec and a task list. A ready Jira task or bug, with acceptance criteria and a clear lane, becomes one implementation task. A ready story or epic goes through the same architect path, then its tasks are mirrored as sub-tasks that respect dependencies.
+Work enters in three ways. A module brief becomes a spec and a task list. A ready Jira task or bug, with acceptance criteria and one lane, becomes one implementation task and skips the architect. A ready story or epic uses the same analysis, then sub-tasks that wait on their dependencies.
 
-The lane does not block on a person. Questions and spec decisions are parked, other ready work continues, and the parked item resumes first when an answer arrives. QA and Security review the diff and the tests. They are not given the developer transcript. A pull request targets a feature branch. Merging stays with a person unless that automation is turned on. A Jira issue reaches Done only after merge and green CI.
+The lane keeps going while a person answers. The answered item resumes first. QA and Security see the diff and the test results, not the developer transcript. Security runs when the task is sensitive. A pull request opens on a feature branch. Merge stays with a person unless that switch is on. Spec approval can time out into an approval. The lane accepts the plan without a separate plan review.
 
-Intake is filtered. Empty reporter allow-lists, human assignees, missing acceptance criteria, unmet blockers, and hold labels are skipped. Jira writes are off until enabled.
-
-The public description covers the behaviour I could verify in the source. It states no success rate and no production volume. The engine is alpha and proprietary.
+The published engine is alpha. Jira writes default to off. This text states no success rate and no production volume.
 
 ## Featured
 
-**Title** (23 characters)
+**Title** (28 characters)
 
-Fleet SDLC orchestrator
+Fleet — AI SDLC Orchestrator
 
-**Card text** (245 characters)
+**Card text** (295 characters)
 
-Fleet is an SDLC orchestrator I extracted and generalized. A module brief or a ready Jira issue goes through spec, implementation, review, and a pull request. People keep the spec decision and the merge. It leaves issues a teammate already owns.
+Fleet is a multi-agent AI orchestrator I built for software delivery, from a delivery system in September 2026 into a product-neutral engine. It coordinates module briefs and ready Jira issues through spec, implementation, review, and pull requests, and it leaves issues a teammate already owns.
 
 ## Skills line
 
-Optional, under the project. Keep it factual:
+Python, LangGraph, multi-agent systems, Jira, SDLC automation, human-in-the-loop systems
 
-Python, LangGraph, Jira, GitHub pull requests, SDLC automation, human-in-the-loop systems
+## Leave out
 
-## What to leave out
-
-- Upstream organization and product name. Add them only if you want that affiliation public. The engine repo records them.
+- The upstream product and organization name. The engine repo records them.
 - Customer issue text, workspace URLs, and tokens.
-- Any figure for speed, success rate, or production use. None is published because none was measured for this page.
+- Speed, cost, success rate, or production volume.

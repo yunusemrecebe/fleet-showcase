@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fleet — AI SDLC Orchestrator</title>
+  <style>
+    @page { size: 13.333in 7.5in; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #f7f6f3; color: #1c1917; }
+    body { font-family: Helvetica, Arial, sans-serif; }
+    .slide {
+      width: 13.333in;
+      height: 7.5in;
+      padding: 0.52in 0.66in 0.58in;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide:last-child { page-break-after: auto; }
+    .bar { position: absolute; left: 0; top: 0; right: 0; height: 8px; background: #c2410c; }
+    h1 { margin: 0.08in 0 0.18in; font-size: 34pt; line-height: 1.12; letter-spacing: -0.4px; }
+    h2 { margin: 0 0 0.08in; font-size: 16pt; }
+    p, li { font-size: 18pt; line-height: 1.35; }
+    p { margin: 0 0 0.16in; }
+    ul { margin: 0.08in 0 0; padding-left: 0.32in; }
+    li { margin: 0 0 0.12in; }
+    .muted { color: #57534e; font-size: 16pt; }
+    .kicker { margin: 0; font-size: 14pt; letter-spacing: 0.14em; text-transform: uppercase; color: #c2410c; font-weight: 700; }
+    .lead { font-size: 22pt; line-height: 1.3; max-width: 11.4in; }
+    footer {
+      position: absolute; left: 0.66in; right: 0.66in; bottom: 0.28in;
+      display: flex; justify-content: space-between;
+      font-size: 12pt; color: #78716c;
+    }
+    .cols { display: flex; gap: 0.22in; margin-top: 0.2in; }
+    .col { flex: 1; background: #fff; border: 1.5px solid #d6d3d1; border-radius: 12px; overflow: hidden; }
+    .col h2 { margin: 0; padding: 0.12in 0.14in; color: #fff; font-size: 15pt; }
+    .navy h2 { background: #1e3a5f; }
+    .green h2 { background: #14532d; }
+    .brown h2 { background: #7c2d12; }
+    .step { margin: 0.1in 0.12in; padding: 0.08in 0.1in; border: 1.5px solid #d6d3d1; border-radius: 8px; font-size: 14pt; text-align: center; background: #fff; }
+    .human { background: #fff7ed; border-color: #c2410c; }
+    .arrow { text-align: center; color: #57534e; font-size: 14pt; line-height: 1; margin: 0; }
+    .band { margin-top: 0.2in; background: #fff; border: 1.5px solid #d6d3d1; border-radius: 12px; padding: 0.14in 0.18in; font-size: 16pt; }
+    .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 0.16in 0.22in; margin-top: 0.16in; }
+    .card { background: #fff; border: 1.5px solid #d6d3d1; border-radius: 12px; padding: 0.14in 0.16in 0.12in; }
+    .card h2 { font-size: 16pt; }
+    .card p { font-size: 14.5pt; margin: 0; color: #44403c; }
+    .tag { display: inline-block; margin-top: 0.12in; padding: 0.04in 0.1in; border-radius: 999px; background: #fff7ed; color: #9a3412; font-size: 13pt; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <div class="bar"></div>
+    <p class="kicker">Portfolio</p>
+    <h1>Fleet — AI SDLC Orchestrator</h1>
+    <p class="lead">A multi-agent system that coordinates planning, implementation, testing, review, and pull requests.</p>
+    <p class="muted">Work starts from a module brief, or from a Jira task, bug, story, or epic that passes the selection rules.</p>
+    <p style="margin-top:0.35in;font-size:18pt;">Yunus Emre Cebe</p>
+    <p class="muted">github.com/yunusemrecebe/fleet-showcase</p>
+    <footer><span>Fleet</span><span>1 / 7</span></footer>
+  </section>
+
+  <section class="slide">
+    <div class="bar"></div>
+    <p class="kicker">Problem</p>
+    <h1>The handoff is the work</h1>
+    <p>Analysis and tracker issues still need a split, a dependency order, and a review that is separate from the implementer.</p>
+    <p>An agent that takes every open issue also takes the wrong ones. A teammate may already own it. It may have no acceptance criteria.</p>
+    <div class="band">Expected output: a spec, ordered tasks, tests, a review, and a pull request. A person decides the spec. Under the defaults, a person merges.</div>
+    <footer><span>Fleet — AI SDLC Orchestrator</span><span>2 / 7</span></footer>
+  </section>
+
+  <section class="slide">
+    <div class="bar"></div>
+    <p class="kicker">Intake</p>
+    <h1>Three ways in</h1>
+    <div class="cols">
+      <div class="col navy">
+        <h2>Module analysis</h2>
+        <p class="step">Module brief</p>
+        <p class="arrow">↓</p>
+        <p class="step">Architect</p>
+        <p class="arrow">↓</p>
+        <p class="step human">Spec decision</p>
+        <p class="arrow">↓</p>
+        <p class="step">Tasks and dependencies</p>
+      </div>
+      <div class="col green">
+        <h2>Task or bug</h2>
+        <p class="step">Ready issue</p>
+        <p class="arrow">↓</p>
+        <p class="step">Selection rules</p>
+        <p class="arrow">↓</p>
+        <p class="step">One implementation task</p>
+        <p class="arrow">↓</p>
+        <p class="step">The architect is skipped</p>
+      </div>
+      <div class="col brown">
+        <h2>Story or epic</h2>
+        <p class="step">Ready issue</p>
+        <p class="arrow">↓</p>
+        <p class="step">Same architect path</p>
+        <p class="arrow">↓</p>
+        <p class="step human">Spec decision</p>
+        <p class="arrow">↓</p>
+        <p class="step">Sub-tasks and dependency links</p>
+      </div>
+    </div>
+    <div class="band">A task starts only when the tasks it depends on are done. Orange marks a person.</div>
+    <footer><span>Fleet — AI SDLC Orchestrator</span><span>3 / 7</span></footer>
+  </section>
+
+  <section class="slide">
+    <div class="bar"></div>
+    <p class="kicker">Agents</p>
+    <h1>Roles, dependencies, separate reviews</h1>
+    <div class="roles">
+      <div class="card">
+        <h2>Architect</h2>
+        <p>Writes the spec and the task list for a module, story, or epic. A task or bug never reaches this role.</p>
+      </div>
+      <div class="card">
+        <h2>Developer</h2>
+        <p>Plans and implements one ready task on a lane. The lane path accepts that plan.</p>
+      </div>
+      <div class="card">
+        <h2>QA</h2>
+        <p>Sees the diff, the test results, and the spec title. Not the full spec. Not the developer transcript.</p>
+      </div>
+      <div class="card">
+        <h2>Security, then BA</h2>
+        <p>Security uses the diff and test results only when the task is sensitive, and does not receive QA findings. BA triages what both return.</p>
+      </div>
+    </div>
+    <p class="tag">Prompt inputs are separated. This is not a separate machine.</p>
+    <footer><span>Fleet — AI SDLC Orchestrator</span><span>4 / 7</span></footer>
+  </section>
+
+  <section class="slide">
+    <div class="bar"></div>
+    <p class="kicker">Illustrative</p>
+    <h1>A checked sequence, not a live delivery</h1>
+    <p class="muted">Acceptance tests drive a fake tracker. The model and the git host are stubbed.</p>
+    <ul>
+      <li>A module question parks. The next brief continues in the same tick.</li>
+      <li>Answered work resumes before any newer item.</li>
+      <li>With the pull-request gate on, Done follows a merge and green CI. That is the default Jira rule.</li>
+      <li>A restart does not duplicate the comments.</li>
+    </ul>
+    <div class="band">No product diff, test log, or pull request from a real run is stored in this repository.</div>
+    <footer><span>Fleet — AI SDLC Orchestrator</span><span>5 / 7</span></footer>
+  </section>
+
+  <section class="slide">
+    <div class="bar"></div>
+    <p class="kicker">Control</p>
+    <h1>It keeps going, and it can resume</h1>
+    <ul>
+      <li>A question frees the lane. The answered item resumes first.</li>
+      <li>State is atomic. Continuations and an outbox survive a crash. Corrupt files are quarantined.</li>
+      <li>A person who moves a Jira issue wins. The base branch is not a push target.</li>
+      <li>Spec approval can time out into an approval. The daytime wait is 3 hours. Overnight it is 180 seconds.</li>
+      <li>A pull request opens after review. Merge stays with a person unless that switch is on.</li>
+    </ul>
+    <footer><span>Fleet — AI SDLC Orchestrator</span><span>6 / 7</span></footer>
+  </section>
+
+  <section class="slide">
+    <div class="bar"></div>
+    <p class="kicker">Status</p>
+    <h1>Where it stands</h1>
+    <ul>
+      <li>Alpha engine. These pages were checked against revision 0e1693d, 22 October 2026.</li>
+      <li>Module intake, filtered Jira intake, lanes, and suspend/resume are in that revision.</li>
+      <li>Jira writes default to off. Security review runs only for sensitive tasks.</li>
+      <li>No success rate and no production volume. Neither was measured for publication.</li>
+    </ul>
+    <div class="band">Read next: workflows, architecture, and provenance, from the repository README.</div>
+    <footer><span>github.com/yunusemrecebe/fleet-showcase</span><span>7 / 7</span></footer>
+  </section>
+</body>
+</html>

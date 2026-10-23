@@ -18,7 +18,7 @@
 <text x="236.0" y="328.5" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">Lane: plan, implement, test</text>
 <line x1="230" y1="348" x2="230" y2="361" stroke="#1c1917" stroke-width="1.4"/><polygon points="225,360 235,360 230,368" fill="#1c1917"/>
 <rect x="36" y="368" width="400" height="48" rx="10" fill="#ffffff" stroke="#a8a29e" stroke-width="1.6"/>
-<text x="236.0" y="396.5" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">QA, then Security</text>
+<text x="236.0" y="396.5" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">QA, then Security if the task is sensitive</text>
 <line x1="230" y1="416" x2="230" y2="429" stroke="#1c1917" stroke-width="1.4"/><polygon points="225,428 235,428 230,436" fill="#1c1917"/>
 <rect x="36" y="436" width="400" height="48" rx="10" fill="#ffffff" stroke="#a8a29e" stroke-width="1.6"/>
 <text x="236.0" y="464.5" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">BA triage</text>
@@ -30,10 +30,11 @@
 <text x="236.0" y="600.5" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="600" text-anchor="middle">A person merges</text>
 <rect x="500" y="96" width="304" height="230" rx="12" fill="#ffffff" stroke="#d6d3d1" stroke-width="1.6"/>
 <text x="518" y="128" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Isolation</text>
-<text x="518" y="160" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">QA and Security receive the diff,</text>
-<text x="518" y="186" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">the test results, and the spec title.</text>
-<text x="518" y="212" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">The developer transcript is absent.</text>
-<text x="518" y="238" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Security does not receive QA findings.</text>
+<text x="518" y="160" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">QA gets the diff, test results,</text>
+<text x="518" y="186" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">and the spec title. Not the full spec.</text>
+<text x="518" y="212" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Security gets the diff and results</text>
+<text x="518" y="238" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">only when the task is sensitive.</text>
+<text x="518" y="264" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Neither gets the developer transcript.</text>
 <rect x="840" y="96" width="304" height="230" rx="12" fill="#ffffff" stroke="#d6d3d1" stroke-width="1.6"/>
 <text x="858" y="128" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">While a person answers</text>
 <text x="858" y="160" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">The question is recorded.</text>
@@ -51,7 +52,7 @@
 <text x="858" y="392" fill="#1c1917" font-family="Helvetica, Arial, sans-serif" font-size="16" font-weight="700" text-anchor="start">Hard stops</text>
 <text x="858" y="424" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">A person who moves the issue wins.</text>
 <text x="858" y="450" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">The base branch is not a push target.</text>
-<text x="858" y="476" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Done needs merge and green CI.</text>
+<text x="858" y="476" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Default Done: merge and green CI.</text>
 <text x="858" y="502" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start">Hold and pause stop new claims.</text>
 <text x="36" y="700" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Orange is a person. Spec approval can still time out into an approval. The lane path accepts the plan.</text>
 <text x="36" y="726" fill="#57534e" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="400" text-anchor="start">Pull-request approval is off unless switched on. Merge stays with a person unless that switch is on.</text>
