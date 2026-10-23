@@ -32,11 +32,11 @@ Jira writes are off until enabled. With the default, Fleet reports what it would
 
 ## Contribution
 
-I am Yunus Emre Cebe. I built this orchestrator inside a product-delivery repository from 1 September 2026 through the extraction on 21 October 2026, and then separated it into the Fleet engine on 22 October 2026.
+Fleet was developed by Yunus Emre Cebe. The delivery repository that held the orchestrator has 535 commits on `main`, counted at revision `5312a9ae` on 23 October 2026. The work ran from 1 September 2026 through the extraction on 21 October 2026, and the Fleet engine was separated on 22 October 2026.
 
 In the earlier system the scheduler, the architect, the lane workers, dependency ordering, worktree implementation, quality gates, and the separated review prompts were already in use. Fleet is that system made product-neutral, with a crash-safe state layer, Jira as a second input, and human handoffs that release the lane instead of blocking it.
 
-Git history records me as the author. Most of those commits also list the Cursor agent as co-author, so this page does not treat every line as written without that tool. Dates, path scope, and the engine revision these pages were checked against are in [Provenance](docs/provenance.md).
+Dates, path scope, and the engine revision these pages were checked against are in [Provenance](docs/provenance.md).
 
 ## Technology
 

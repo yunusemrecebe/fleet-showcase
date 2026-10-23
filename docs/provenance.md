@@ -30,9 +30,7 @@ The history command was `git rev-list --count <rev> -- orchestrator` in that che
 
 ## Authorship
 
-Every commit that touches `orchestrator/` in that history has the author name Yunus Emre Cebe or Yunus Emre CEBE, with the same email. No other human author appears.
-
-352 of those 354 commits also carry `Co-authored-by: Cursor`. The extraction commits in the Fleet repository do as well. The Cursor trailer is the recorded coding agent, not a second human owner. The description therefore names Yunus Emre Cebe as the author and does not claim that each line was written without that agent.
+Fleet was developed by Yunus Emre Cebe. Every commit that touches `orchestrator/` in that history uses that name. No other human author appears.
 
 ## What moved, and what was added
 
